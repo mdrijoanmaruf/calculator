@@ -1,98 +1,111 @@
-
-
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>
-        calculator
-    </title>
-      <meta charset="utf-8">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="bg">
 
-    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    </div>
+    <div class="main">
+      <form class="" action="index.html" method="post">
+        <input type="text" disabled class="textview" name="textview" value="">
+      </form>
+      <table>
+        <tr>
+          <td><input class="button" type="button" value="C" onclick="clean()"/></td>
+          <td><input class="button" type="button" value="<" onclick="back()"/></td>
+          <td><input class="button" type="button" value="/"  onclick="insert('/')"/></td>
+          <td><input class="button" type="button" value="X"  onclick="insert('*')"/></td>
+        </tr>
+        <tr>
+          <td><input class="button" type="button" value="7"  onclick="insert(7)"/></td>
+          <td><input class="button" type="button" value="8"  onclick="insert(8)"/></td>
+          <td><input class="button" type="button" value="9"  onclick="insert(9)"/></td>
+          <td><input class="button" type="button" value="-"  onclick="insert('-')"/></td>
+        </tr>
+        <tr>
+          <td><input class="button" type="button" value="4"  onclick="insert(4)"/></td>
+          <td><input class="button" type="button" value="5"  onclick="insert(5)"/></td>
+          <td><input class="button" type="button" value="6"  onclick="insert(6)"/></td>
+          <td><input class="button" type="button" value="+"  onclick="insert('+')"/></td>
+        </tr>
+        <tr>
+          <td><input class="button" type="button" value="1"  onclick="insert(1)"/></td>
+          <td><input class="button" type="button" value="2"  onclick="insert(2)"/></td>
+          <td><input class="button" type="button" value="3"  onclick="insert(3)"/></td>
+          <td rowspan="2"><input style="height: 110px;" class="button" type="button" value="=" onclick="equal()"/></td>
+        </tr>
+        <tr>
+          <td colspan="2" ><input style="width:110px;" class="button" type="button" value="0"  onclick="insert(0)"/></td>
+          <td><input class="button" type="button" value="."  onclick="insert('.')"/></td>
+        </tr>
+      </table>
+    </div>
+    <div class="bottom-nav">
+      <ul>
+        <li><span onclick="fta()" class="ta"></span></li>
+        <li><span onclick="ftb()"class="tb"></span></li>
+        <li><span onclick="ftc()"class="tc"></span></li>
+        <li><span onclick="ftd()" class="td"></span></li>
+      </ul>
+    </div>
 
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu|Wendy+One" rel="stylesheet">
-    
-    
+    <script type="text/javascript">
+      var bg = document.getElementsByClassName("bg");
+      var button = document.getElementsByClassName("button");
+      var main = document.getElementsByClassName("main");
+      var ta = document.getElementsByClassName("ta");
+      var tb = document.getElementsByClassName("tb");
+      var tc = document.getElementsByClassName("tc");
+      var td = document.getElementsByClassName("td");
 
-    <link rel="stylesheet" type="text/css" href="style.css"> 
-
-
-<script type="text/javascript" src="main.js"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    
-</script>
-
-</head>
-
-<body id='body'>
-
-   <button class='setting' id="setting">•••</button>
-   
- <div class='settingContainer' id="setting"><button  style='float:right; font-size:14px; width:20px; height:20px; border-radius:50%; text-align:center;' onclick='closeSetting()'>X</button><h2>Settings</h2><br />
-  <div><label><span class='title'>Night Mode</span><input type='checkbox' id='check' name='theme'></input><span class='radioContainer'></span></label></div></div>
-  
-     <div id='splash' class='splash'><h1>Calculator</h1> <div class='lodding'><div class='value'></div></div> </div>
-               
-    <div class="calculator">
-
-        <input type="text"  class="viewer" id="screen" placeholder="0" disabled style="border:none;   border-radius:5px; font-size: 40px; width:260px; background-color: #ccff90;
- "></input><br>
- 
-
-        <button class="option" onclick="onOff()" style="font-size: 16px; width: 60px; height: 26px; background-color: #d32f2f; color: #fff; border-radius: 8px; "  onclick="off()" >Off</button> 
-
-        <button class="option" onclick="clearAll()" style="font-size: 16px; width: 60px; height: 26px;  background-color:#00c853; color: #fff; border-radius: 8px; " >Clear</button>
-
-        <button class="option" onclick="deleteLastNum()" style="font-size: 16px; width: 60px; height: 26px; font-style:bold; background-color:#fdd835; color: #fff; border-radius: 8px; margin-right: 20px;" >&#8592;</button> 
-
-
-        <button value="7"  onclick="getNumber(7)">7</button>
-        <button value="8" onclick="getNumber(8)">8</button>
-        <button value="9" onclick="getNumber(9)">9</button>
-        <button value="plus" class="oprator" onclick="getOparator('plus')">+</button><br>
-
-        <button value="4" onclick="getNumber(4)">4</button>
-
-        <button value="5" onclick="getNumber(5)">5</button>
-        <button value="6" onclick="getNumber(6)">6</button>
-        <button value="minus" class="oprator" onclick="getOparator('minus')">&#x2212;</button><br>
-
-        <button value="1" onclick="getNumber(1)">1</button>
-        <button value="2" onclick="getNumber(2)">2</button>
-        <button value="3" onclick="getNumber(3)">3</button>
-        <button value="multiply" class="oprator" onclick="getOparator('multiply')"> &#x00D7;</button>
-        <button value="dot" onclick="getNumber('dot')">.</button>
-        <button value="0" onclick="getNumber(0)">0</button>
-        <button value="plusminus" onclick="getOparator('plusminus')">&#x00B1;</button>
-        <button value="division" class="oprator" onclick="getOparator('division')">&#247;</button>
-
-
-        <button class="equal" style="width: 67%" onclick="calculate()">=</button>
-        <button class="oprator" onclick="setBracket()">&#40; &#41;</button><br>
-
-        
-    
-        <h6 style="color: #9e9e9e; position: absolute; left:40%; letter-spacing:0em;
-        
-        top:96%; font-size:10px; background:transparent">created <span style='color:pink; background:none'>&#10084;</span> by Md Rijoan Maruf</h6>
-
-</div>
-
-
-<script>var screen = document.getElementById("screen");
-
-function splash() {
-    var splashContainer = document.getElementById('splash');
-    splashContainer.style.display = 'none';
-}
-setTimeout(splash,4000);
-
-
-var check =document.getElementById("check");
-if(check.checked){
-    console.log("chek");
-}
-
-</script>
-</body>
-</html>
+      function fta() {
+        bg[0].style.background = "linear-gradient(#6e05ff, #100417)";
+        main[0].style.backgroundColor = "#1a0430";
+        for(i = 0 ;i<button.length;i++) {
+          button[i].setAttribute("class","button");
+        }
+      }
+      function ftb() {
+        bg[0].style.background = "linear-gradient(rgb(16, 190, 16), rgb(0, 0, 0))";
+        main[0].style.backgroundColor = "rgb(3, 126, 3)";
+        for(i = 0 ;i<button.length;i++) {
+          button[i].setAttribute("class","button buttonb");
+        }
+      }
+      function ftc() {
+        bg[0].style.background = "linear-gradient(rgb(238, 45, 45), rgb(16, 4, 23))";
+        main[0].style.backgroundColor = "rgb(238, 45, 45)";
+        for(i = 0 ;i<button.length;i++) {
+          button[i].setAttribute("class","button buttonc");
+        }
+      }
+      function ftd() {
+        bg[0].style.background = "linear-gradient(#3344ff, #000000)";
+        main[0].style.backgroundColor = "#3344ff";
+        for(i = 0 ;i<button.length;i++) {
+          button[i].setAttribute("class","button buttond");
+        }
+      }
+      function insert(num) {
+        document.forms[0].elements.textview.value = document.forms[0].elements.textview.value + num;
+      }
+      function equal() {
+        var exp = document.forms[0].elements.textview.value;
+        if(exp) {
+          exp = eval(document.forms[0].elements.textview.value);
+          document.forms[0].elements.textview.value = exp;
+        }
+      }
+      function clean() {
+        document.forms[0].elements.textview.value = "";
+      }
+      function back() {
+        var exp = document.forms[0].elements.textview.value;
+        document.forms[0].elements.textview.value = exp.substring(0,exp.length-1);
+      }
+    </script>
+  </body>
