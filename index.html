@@ -1,111 +1,176 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+         * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Roboto Mono", monospace;
+      }
+      body {
+        height: 100vh;
+        background: linear-gradient(to bottom, #f9544c 50%, #090c31 50%);
+      }
+      .wrapper {
+        width: 320px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+      .calculator {
+        background-color: #15173c;
+        width: 100%;
+        padding: 30px 15px 30px 15px;
+        border-radius: 8px;
+        box-shadow: 0 20px 50px rgba(0, 5, 24, 0.4);
+      }
+      a {
+        display: block;
+        background-color: #f9544c;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        padding: 15px 0;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+      .display {
+        width: 100%;
+      }
+      .display input {
+        width: 100%;
+        padding: 15px 10px;
+        text-align: right;
+        border: none;
+        background-color: transparent;
+        color: #ffffff;
+        font-size: 35px;
+      }
+      .display input::placeholder {
+        color: #9490ac;
+      }
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+        margin-top: 20px;
+      }
+      .buttons input[type="button"] {
+        font-size: 16px;
+        padding: 17px;
+        border-radius: 5px;
+        border: none;
+        background-color: transparent;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      .buttons input[type="button"]:hover {
+        box-shadow: 0 8px 25px #000d2e;
+      }
+      input[type="button"]#equal {
+        grid-row: span 2;
+        background-color: #f9544c;
+        color: #ffffff;
+      }
+      input[type="button"][value="0"] {
+        grid-column: span 2;
+      } 
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="bg">
+    <div class="wrapper">
+      <div class="calculator">
+        <div class="display">
+          <input type="text" placeholder="0" id="input" disabled />
+        </div>
+        <div class="buttons">
+          <!-- AC -->
+          <input type="button" value="AC" id="clear" />
+          <!-- Erase Single Value -->
+          <input type="button" value="DEL" id="erase" />
+          <input type="button" value="/" class="input-button" />
+          <input type="button" value="*" class="input-button" />
 
-    </div>
-    <div class="main">
-      <form class="" action="index.html" method="post">
-        <input type="text" disabled class="textview" name="textview" value="">
-      </form>
-      <table>
-        <tr>
-          <td><input class="button" type="button" value="C" onclick="clean()"/></td>
-          <td><input class="button" type="button" value="<" onclick="back()"/></td>
-          <td><input class="button" type="button" value="/"  onclick="insert('/')"/></td>
-          <td><input class="button" type="button" value="X"  onclick="insert('*')"/></td>
-        </tr>
-        <tr>
-          <td><input class="button" type="button" value="7"  onclick="insert(7)"/></td>
-          <td><input class="button" type="button" value="8"  onclick="insert(8)"/></td>
-          <td><input class="button" type="button" value="9"  onclick="insert(9)"/></td>
-          <td><input class="button" type="button" value="-"  onclick="insert('-')"/></td>
-        </tr>
-        <tr>
-          <td><input class="button" type="button" value="4"  onclick="insert(4)"/></td>
-          <td><input class="button" type="button" value="5"  onclick="insert(5)"/></td>
-          <td><input class="button" type="button" value="6"  onclick="insert(6)"/></td>
-          <td><input class="button" type="button" value="+"  onclick="insert('+')"/></td>
-        </tr>
-        <tr>
-          <td><input class="button" type="button" value="1"  onclick="insert(1)"/></td>
-          <td><input class="button" type="button" value="2"  onclick="insert(2)"/></td>
-          <td><input class="button" type="button" value="3"  onclick="insert(3)"/></td>
-          <td rowspan="2"><input style="height: 110px;" class="button" type="button" value="=" onclick="equal()"/></td>
-        </tr>
-        <tr>
-          <td colspan="2" ><input style="width:110px;" class="button" type="button" value="0"  onclick="insert(0)"/></td>
-          <td><input class="button" type="button" value="."  onclick="insert('.')"/></td>
-        </tr>
-      </table>
-    </div>
-    <div class="bottom-nav">
-      <ul>
-        <li><span onclick="fta()" class="ta"></span></li>
-        <li><span onclick="ftb()"class="tb"></span></li>
-        <li><span onclick="ftc()"class="tc"></span></li>
-        <li><span onclick="ftd()" class="td"></span></li>
-      </ul>
-    </div>
+          <input type="button" value="7" class="input-button" />
+          <input type="button" value="8" class="input-button" />
+          <input type="button" value="9" class="input-button" />
+          <input type="button" value="-" class="input-button" />
 
+          <input type="button" value="6" class="input-button" />
+          <input type="button" value="5" class="input-button" />
+          <input type="button" value="4" class="input-button" />
+          <input type="button" value="+" class="input-button" />
+
+          <input type="button" value="1" class="input-button" />
+          <input type="button" value="2" class="input-button" />
+          <input type="button" value="3" class="input-button" />
+
+          <input type="button" value="=" id="equal" />
+          <input type="button" value="0" class="input-button" />
+          <input type="button" value="." class="input-button" />
+        </div>
+      </div>
+      <a href="https://www.facebook.com/md.rijoanmaruf" target="_blank"
+        >Created by Md Rijoan Maruf </a
+      >
+    </div>
     <script type="text/javascript">
-      var bg = document.getElementsByClassName("bg");
-      var button = document.getElementsByClassName("button");
-      var main = document.getElementsByClassName("main");
-      var ta = document.getElementsByClassName("ta");
-      var tb = document.getElementsByClassName("tb");
-      var tc = document.getElementsByClassName("tc");
-      var td = document.getElementsByClassName("td");
-
-      function fta() {
-        bg[0].style.background = "linear-gradient(#6e05ff, #100417)";
-        main[0].style.backgroundColor = "#1a0430";
-        for(i = 0 ;i<button.length;i++) {
-          button[i].setAttribute("class","button");
+      let equal_pressed = 0;
+      //Refer All Buttons(excluding => AC and DEL)
+      let button_input = document.querySelectorAll(".input-button");
+      //Refer input,equal,clear and erase
+      let input = document.getElementById("input");
+      let equal = document.getElementById("equal");
+      let clear = document.getElementById("clear");
+      let erase = document.getElementById("erase");
+      window.onload = () => {
+        input.value = "";
+      };
+      //access each class using forEach
+      button_input.forEach((button_class) => {
+        button_class.addEventListener("click", () => {
+          if (equal_pressed == 1) {
+            input.value = "";
+            equal_pressed = 0;
+          }
+          //display value of each button
+          input.value += button_class.value;
+        });
+      });
+      //Solve the user's input when clicked on equal sign.
+      equal.addEventListener("click", () => {
+        equal_pressed = 1;
+        let inp_val = input.value;
+        try {
+          //evaluate user's input
+          let solution = eval(inp_val);
+          //True for natural numbers
+          //False for decimals
+          if (Number.isInteger(solution)) {
+            input.value = solution;
+          } else {
+            input.value = solution.toFixed(2);
+          }
+        } catch (err) {
+          //if user has entered something wrong
+          alert("There is an Input Errror");
         }
-      }
-      function ftb() {
-        bg[0].style.background = "linear-gradient(rgb(16, 190, 16), rgb(0, 0, 0))";
-        main[0].style.backgroundColor = "rgb(3, 126, 3)";
-        for(i = 0 ;i<button.length;i++) {
-          button[i].setAttribute("class","button buttonb");
-        }
-      }
-      function ftc() {
-        bg[0].style.background = "linear-gradient(rgb(238, 45, 45), rgb(16, 4, 23))";
-        main[0].style.backgroundColor = "rgb(238, 45, 45)";
-        for(i = 0 ;i<button.length;i++) {
-          button[i].setAttribute("class","button buttonc");
-        }
-      }
-      function ftd() {
-        bg[0].style.background = "linear-gradient(#3344ff, #000000)";
-        main[0].style.backgroundColor = "#3344ff";
-        for(i = 0 ;i<button.length;i++) {
-          button[i].setAttribute("class","button buttond");
-        }
-      }
-      function insert(num) {
-        document.forms[0].elements.textview.value = document.forms[0].elements.textview.value + num;
-      }
-      function equal() {
-        var exp = document.forms[0].elements.textview.value;
-        if(exp) {
-          exp = eval(document.forms[0].elements.textview.value);
-          document.forms[0].elements.textview.value = exp;
-        }
-      }
-      function clean() {
-        document.forms[0].elements.textview.value = "";
-      }
-      function back() {
-        var exp = document.forms[0].elements.textview.value;
-        document.forms[0].elements.textview.value = exp.substring(0,exp.length-1);
-      }
+      });
+      //Clear Whole Input
+      clear.addEventListener("click", () => (input.value = ""));
+      //Erase Button
+      erase.addEventListener("click", () => {
+        input.value = input.value.substr(0, input.value.length - 1);
+      });
     </script>
   </body>
+</html>
